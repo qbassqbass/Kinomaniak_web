@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Show Movies</title>
     </head>
     <body>
         <jsp:useBean id="db" scope="session" class="kinomaniak_database.DBConnector" />
