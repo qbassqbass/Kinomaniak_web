@@ -34,18 +34,26 @@ public class Parser {
         return done;
     }
     
+    public ArrayList<Object> load(Connection conn, String type){
+        return this.load(conn,type,-1);
+    }
     /**
      *
      * @param conn
      * @param type
+     * @param id
      * @return
      */
-    public ArrayList<Object> load(Connection conn, String type){
+    public ArrayList<Object> load(Connection conn, String type, int id){
         ArrayList<Object> arr = new ArrayList<Object>();
         Object obj = null;
+        ResultSet result;
         try {
             Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery(this.load(type));
+            if(id==-1)
+                result = statement.executeQuery(this.load(type));
+            else
+                result = statement.executeQuery(this.load(type, id));
             switch(type){
                 case "Movie":
 //                    obj = new Movie(result.getString("name"),result.getString("genre"),result.getString("rating"),result.getString("type"));
@@ -64,10 +72,10 @@ public class Parser {
                     break;
                 case "Attraction":
                     while(result.next()){
-                        int id = result.getInt("id");
+                        int idd = result.getInt("id");
                         String name = result.getString("name");
                         float price = result.getFloat("price");
-                        obj = new Attraction(id, name, price);
+                        obj = new Attraction(idd, name, price);
                         arr.add(obj);
                     }
 //                    cannot do anything... -.-
@@ -107,7 +115,7 @@ public class Parser {
                         obj = new Res(idres, nameres, showid, seatString.length, seats);
                         if(checked)((Res)obj).accept();
                         if(ok)((Res)obj).get();
-                        arr.add(obj);                        
+                        arr.add(obj);
                     }
                     break;
                 case "Show":
@@ -116,38 +124,44 @@ public class Parser {
                         ArrayList<Object> movies = this.load(conn, "Movie");
                         ArrayList<Object> rooms = this.load(conn, "CRoom");
                         ArrayList<Object> times = this.load(conn, "Time");
+                        int showid = result.getInt("id");
                         int movid = result.getInt("mov");
                         int roomid = result.getInt("room");
                         int timeid = result.getInt("timeid");
-                        int i = 0;
-                        for(Object m : movies){
-                            Movie mm;
-                            if(m instanceof Movie) mm = (Movie)m;
-                            else return null;
-                            if(mm.getId() == movid){
-                                movid = i;
-                                break;
-                            }
-                            i++;
-                        }
-                        i = 0;
-                        for(Object r : rooms){
-                            CRoom cr;
-                            if(r instanceof CRoom) cr = (CRoom)r;
-                            else return null;
-                            if(cr.getID() == roomid){
-                                roomid = i;
-                                break;
-                            }
-                            i++;
-                        }
-                        i = 0;
-                        for(Object t : times){
-                            Time tm;
-                            if(t instanceof Time) tm = (Time)t;
-                            else return null;
-//                            if(tm.get)
-                        }
+                        movies = this.load(conn, "Movie", movid);
+                        rooms = this.load(conn, "CRoom", roomid);
+                        times = this.load(conn, "Time", timeid);
+                        obj = new Show(showid, (Movie)movies.get(0), (CRoom)rooms.get(0), (Time)times.get(0));
+                        arr.add(obj);
+//                        int i = 0;
+//                        for(Object m : movies){
+//                            Movie mm;
+//                            if(m instanceof Movie) mm = (Movie)m;
+//                            else return null;
+//                            if(mm.getId() == movid){
+//                                movid = i;
+//                                break;
+//                            }
+//                            i++;
+//                        }
+//                        i = 0;
+//                        for(Object r : rooms){
+//                            CRoom cr;
+//                            if(r instanceof CRoom) cr = (CRoom)r;
+//                            else return null;
+//                            if(cr.getID() == roomid){
+//                                roomid = i;
+//                                break;
+//                            }
+//                            i++;
+//                        }
+//                        i = 0;
+//                        for(Object t : times){
+//                            Time tm;
+//                            if(t instanceof Time) tm = (Time)t;
+//                            else return null;
+////                            if(tm.get)
+//                        }
 //                        obj = new Show((Movie)movies.get(movid), (CRoom)rooms.get(roomid), result.getInt("timeid"));
                     }
                     break;
@@ -156,6 +170,13 @@ public class Parser {
                     break;
                 case "User":
 //                    cannot do anything... -.-
+                    break;
+                case "Time":
+                    while(result.next()){
+                        obj = new Time(result.getInt("id"), result.getInt("thour"), result.getInt("tminute"),
+                                        result.getByte("tday"), result.getInt("tmonth"), result.getInt("tyear"));
+                        arr.add(obj);
+                    }
                     break;
                 default:                    
 //                    cannot do anything... -.-
@@ -205,6 +226,12 @@ public class Parser {
         return query;
     }
     
+    public String load(String type, int id){
+        String query = "";
+        query = load(type)+" WHERE id="+id;
+        return query;
+    }
+    
     public String load(String type){
         Object obj = null;
         String query = "";
@@ -213,7 +240,7 @@ public class Parser {
                 query = "SELECT * FROM Movie";
                 break;
             case "CRoom":
-                query = "SELECT * FROM Croom";
+                query = "SELECT * FROM CRoom";
                 break;
             case "Attraction":
                 query = "SELECT * FROM Attraction";
@@ -231,13 +258,16 @@ public class Parser {
                 query = "SELECT * FROM Res";
                 break;
             case "Show":
-                query = "SELECT * FROM Show";
+                query = "SELECT * FROM Shows";
                 break;
             case "Ticket":
                 query = "SELECT * FROM Ticket";
                 break;
             case "User":
                 query = "SELECT * FROM User";
+                break;
+            case "Time":
+                query = "SELECT * FROM TimeDate";
                 break;
             default:
                 query = "SELECT * FROM Dummy";

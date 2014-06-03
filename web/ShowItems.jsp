@@ -52,5 +52,31 @@
                     
             <%    }
             } %>
+            
+            Res Test:
+            <% arr = db.load("Res",3);
+            for(Object o : arr){
+                if(o instanceof Res){
+                    Res r = (Res)o;%>
+                    <h1><%= r.getId() %>. <%= r.getName() %></h1>
+                    Seats: <%= r.formatSeats() %><br />
+                    ShowID: <%= r.getShowID() %> <br /><br />
+                    
+                    
+            <%    }
+            } %>
+            
+            Shows:
+            <% arr = db.load("Show");
+            for(Object o : arr){
+                if(o instanceof Show){
+                    Show s = (Show)o;%>
+                    <h1><%= s.getID()%>. <%= s.getMovie().getName()%></h1>
+                    CRoom: <%= s.getRoom().getID()%><br />
+                    Time: <%= s.getFormatted() %> <br /><br />
+                    
+                    
+            <%    }
+            } %>
     </body>
 </html>

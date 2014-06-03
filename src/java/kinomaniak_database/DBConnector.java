@@ -28,7 +28,7 @@ public class DBConnector {
     private Connection connection;
     private Statement statement;
     private String query;
-    private final Parser parser;
+    public final Parser parser;
 
     public DBConnector(){
         this.parser = new Parser();
@@ -70,21 +70,12 @@ public class DBConnector {
     }
     
     public ArrayList<Object> load(String type){
-//        try {
             ArrayList<Object> arr = new ArrayList<Object>();
-//            Class.forName(DBDRIVER).newInstance();
-//            connection = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
             arr = this.parser.load(this.connection, type);
             return arr;
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return null;
+    }
+    
+    public ArrayList<Object> load(String type, int id){
+        return this.parser.load(this.connection, type, id);
     }
 }
