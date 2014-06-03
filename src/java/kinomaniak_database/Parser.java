@@ -56,15 +56,12 @@ public class Parser {
                 result = statement.executeQuery(this.load(type, id));
             switch(type){
                 case "Movie":
-//                    obj = new Movie(result.getString("name"),result.getString("genre"),result.getString("rating"),result.getString("type"));
-//                    arr.add(obj);
                     while(result.next()){
                         obj = new Movie(result.getInt("id"),result.getString("name"),result.getString("genere"),result.getString("rating"),result.getString("descr"));
                         arr.add(obj);
                     }
                     break;
                 case "CRoom":
-//                    obj = new CRoom()
                     while(result.next()){
                         obj = new CRoom(result.getInt("id"));
                         arr.add(obj);
@@ -78,14 +75,11 @@ public class Parser {
                         obj = new Attraction(idd, name, price);
                         arr.add(obj);
                     }
-//                    cannot do anything... -.-
                     break;
                 case "GoldCard":
 //                    cannot do anything... -.-
                     break;
                 case "Product":
-//                    cannot do anything... -.-
-//                    Product(String name, int type, float price, int count)
                     while(result.next()){
                         obj = new Product(result.getInt("id"), result.getString("name"), result.getInt("typ"), result.getFloat("price"), result.getInt("pcount"));
                         arr.add(obj);
@@ -95,7 +89,6 @@ public class Parser {
 //                    cannot do anything... -.-
                     break;
                 case "Res":
-//                    cannot do anything... -.-
                     while(result.next()){                        
                         int idres = result.getInt("id");
                         String nameres = result.getString("imienazwisko");
@@ -119,7 +112,6 @@ public class Parser {
                     }
                     break;
                 case "Show":
-//                    cannot do anything... -.-
                     while(result.next()){
                         ArrayList<Object> movies = this.load(conn, "Movie");
                         ArrayList<Object> rooms = this.load(conn, "CRoom");
