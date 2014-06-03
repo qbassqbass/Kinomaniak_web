@@ -13,11 +13,16 @@ import org.jdom2.Element;
  */
 public class Time implements Serializable{
     private static final long serialVersionUID = 2L;
+    private int id;
     private int hour;
     private int minute;
     private int day;
     private int month;
     private int year;
+    
+    public int getId(){
+        return this.id;
+    }
         
     public Element toXML(){
         Element res = new Element("Time");
@@ -51,6 +56,11 @@ public class Time implements Serializable{
             this.hour = hour;
             this.minute = minute;
         }        
+    public Time(int id, int hour, int minute){
+        this.id = id;
+        this.hour = hour;
+        this.minute = minute;
+    }
     /**
      * Konstruktor klasy czasu dla ustawienia daty i godziny
      * @param hour godzina
@@ -62,6 +72,15 @@ public class Time implements Serializable{
     public Time(int hour,int minute,int day,int month,int year){
         this.hour = hour;
         this.minute  =minute;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+    
+    public Time(int id, int hour,int minute,int day,int month,int year){
+        this.id = id;
+        this.hour = hour;
+        this.minute = minute;
         this.day = day;
         this.month = month;
         this.year = year;

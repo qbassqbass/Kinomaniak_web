@@ -51,12 +51,12 @@ public class Parser {
 //                    obj = new Movie(result.getString("name"),result.getString("genre"),result.getString("rating"),result.getString("type"));
 //                    arr.add(obj);
                     while(result.next()){
-                        obj = new Movie(result.getString("name"),result.getString("genere"),result.getString("rating"),result.getString("descr"));
+                        obj = new Movie(result.getInt("id"),result.getString("name"),result.getString("genere"),result.getString("rating"),result.getString("descr"));
                         arr.add(obj);
                     }
                     break;
                 case "CRoom":
-//                    cannot do anything... -.-
+//                    obj = new CRoom()
                     break;
                 case "Attraction":
                     int id = result.getInt("id");
@@ -70,20 +70,67 @@ public class Parser {
                     break;
                 case "Product":
 //                    cannot do anything... -.-
+//                    Product(String name, int type, float price, int count)
+                    while(result.next()){
+                        obj = new Product(result.getInt("id"), result.getString("name"), result.getInt("typ"), result.getFloat("price"), result.getInt("pcount"));
+                        arr.add(obj);
+                    }
                     break;
                 case "Report":
 //                    cannot do anything... -.-
                     break;
                 case "Res":
 //                    cannot do anything... -.-
-                    int idres = result.getInt("id");
-                    String nameres = result.getString("imienazwisko");
-                    boolean checked = result.getBoolean("checked");
-                    boolean ok = result.getBoolean("ok");
-                    int seat = result.getInt("seat");
+                    while(result.next()){                        
+                        int idres = result.getInt("id");
+                        String nameres = result.getString("imienazwisko");
+                        boolean checked = result.getBoolean("checked");
+                        boolean ok = result.getBoolean("ok");
+                        String seat = result.getString("seat");
+//                        obj = new Res()
+                        
+                    }
                     break;
                 case "Show":
 //                    cannot do anything... -.-
+                    while(result.next()){
+                        ArrayList<Object> movies = this.load(conn, "Movie");
+                        ArrayList<Object> rooms = this.load(conn, "CRoom");
+                        ArrayList<Object> times = this.load(conn, "Time");
+                        int movid = result.getInt("mov");
+                        int roomid = result.getInt("room");
+                        int timeid = result.getInt("timeid");
+                        int i = 0;
+                        for(Object m : movies){
+                            Movie mm;
+                            if(m instanceof Movie) mm = (Movie)m;
+                            else return null;
+                            if(mm.getId() == movid){
+                                movid = i;
+                                break;
+                            }
+                            i++;
+                        }
+                        i = 0;
+                        for(Object r : rooms){
+                            CRoom cr;
+                            if(r instanceof CRoom) cr = (CRoom)r;
+                            else return null;
+                            if(cr.getID() == roomid){
+                                roomid = i;
+                                break;
+                            }
+                            i++;
+                        }
+                        i = 0;
+                        for(Object t : times){
+                            Time tm;
+                            if(t instanceof Time) tm = (Time)t;
+                            else return null;
+//                            if(tm.get)
+                        }
+//                        obj = new Show((Movie)movies.get(movid), (CRoom)rooms.get(roomid), result.getInt("timeid"));
+                    }
                     break;
                 case "Ticket":
 //                    cannot do anything... -.-
@@ -107,22 +154,22 @@ public class Parser {
             query = "INSERT INTO Movie VALUES (NULL, '" + mov.getName() +"', '" + mov.getGenre() + "', '" + mov.getRating() + "', '" + mov.getDesc() + "');";
         }else if(obj instanceof CRoom){
             CRoom cr = (CRoom) obj;
-            query = "INSERT INTO croom VALUES (NULL, '" + cr.getID() + "');";
+            query = "INSERT INTO Croom VALUES (NULL, '" + cr.getID() + "');";
         }else if(obj instanceof Attraction){
             Attraction at = (Attraction) obj;
-            query = "INSERT INTO attraction VALUES (NULL, '" + at.getName() + "', '" + at.getPrice() + "');";
+            query = "INSERT INTO Attraction VALUES (NULL, '" + at.getName() + "', '" + at.getPrice() + "');";
         }else if(obj instanceof Product){
             Product pr = (Product) obj;
-            query = "INSERT INTO product VALUES (NULL, '" + pr.getName() + "', '" + pr.getType() + "', '" + pr.getPrice() + "', '" + pr.getCount() + ",);";
+            query = "INSERT INTO Product VALUES (NULL, '" + pr.getName() + "', '" + pr.getType() + "', '" + pr.getPrice() + "', '" + pr.getCount() + ",);";
         }else if(obj instanceof Report){
             Report rep = (Report) obj;
             
         }else if(obj instanceof Res){
             Res res = (Res) obj;
-            query = "INSERT INTO res VALUES (NULL, '" + res.getName() + "', '" + res.getShowID() + "', '" + res.formatSeatsSQL()+ "', '" + res.ischecked() + "', '" + res.isok() + "');";
+            query = "INSERT INTO Res VALUES (NULL, '" + res.getName() + "', '" + res.getShowID() + "', '" + res.formatSeatsSQL()+ "', '" + res.ischecked() + "', '" + res.isok() + "');";
         }else if(obj instanceof Show){
             Show sh = (Show) obj;
-            query = "INSERT INTO show VALUES (NULL, '" + sh.getID() + "', '" + sh.getMovie().getId() + "', '" + sh.getRoom().getID() + "', '" + sh.getFormatted() + "');";
+            query = "INSERT INTO Show VALUES (NULL, '" + sh.getID() + "', '" + sh.getMovie().getId() + "', '" + sh.getRoom().getID() + "', '" + sh.getFormatted() + "');";
         }else if(obj instanceof Ticket){
             Ticket tick = (Ticket) obj;
             
@@ -131,7 +178,7 @@ public class Parser {
             // will not be implemented
         }else if(obj instanceof User){
             User usr = (User) obj;
-            query = "INSERT INTO user VALUES (NULL, '" + usr.getName() + "', '" + usr.getPass() + "', '" + usr.getUType() + "');";
+            query = "INSERT INTO User VALUES (NULL, '" + usr.getName() + "', '" + usr.getPass() + "', '" + usr.getUType() + "');";
         }else if(obj instanceof GoldCard){
             GoldCard gc = (GoldCard) obj;
             
@@ -147,34 +194,34 @@ public class Parser {
                 query = "SELECT * FROM Movie";
                 break;
             case "CRoom":
-                query = "SELECT * FROM croom";
+                query = "SELECT * FROM Croom";
                 break;
             case "Attraction":
-                query = "SELECT * FROM attraction";
+                query = "SELECT * FROM Attraction";
                 break;
             case "GoldCard":
-                query = "SELECT * FROM goldcard";
+                query = "SELECT * FROM Goldcard";
                 break;
             case "Product":
-                query = "SELECT * FROM product";
+                query = "SELECT * FROM Product";
                 break;
             case "Report":
-                query = "SELECT * FROM report";
+                query = "SELECT * FROM Report";
                 break;
             case "Res":
-                query = "SELECT * FROM res";
+                query = "SELECT * FROM Res";
                 break;
             case "Show":
-                query = "SELECT * FROM show";
+                query = "SELECT * FROM Show";
                 break;
             case "Ticket":
-                query = "SELECT * FROM ticket";
+                query = "SELECT * FROM Ticket";
                 break;
             case "User":
-                query = "SELECT * FROM user";
+                query = "SELECT * FROM User";
                 break;
             default:
-                query = "SELECT * FROM dummy";
+                query = "SELECT * FROM Dummy";
         }
         return query;
     }

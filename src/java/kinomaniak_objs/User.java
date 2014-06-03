@@ -61,6 +61,16 @@ public class User implements Serializable{
         this.availcmds = new int[12];
         this.setCmds();
     }
+    
+    public User(int id,String name, String password,int utype){
+        this.name = name;
+        String tmp = password;
+        this.password = toSHA1(tmp.getBytes());        
+        this.utype = utype;
+        this.availcmds = new int[12];
+        this.setCmds();
+        this.id = id;
+    }
     /**
      * Utworzenie instancji klasy użytkownika na potrzeby logowania klienta
      * @param name nazwa użytkownika

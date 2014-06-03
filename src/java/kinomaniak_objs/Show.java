@@ -52,6 +52,13 @@ public class Show implements Serializable {
         this.room = room;
         this.time = time;
     }
+    
+    public Show(int id, Movie mov, CRoom room, Time time){
+        this.showid = id;
+        this.mov = mov;
+        this.room = room;
+        this.time = time;
+    }
     /**
      * Metoda zwracająca czas rozpoczęcia seansu
      * @return tablica czasu, gdzie int[0] - godzina, int[1] - minuta

@@ -18,6 +18,7 @@ public class Res implements Serializable{
     
     private static final long serialVersionUID = 4L;
    
+    private int id;
     private String imienazwisko;
     private int showid;
     private int[][] seat;
@@ -96,6 +97,32 @@ public class Res implements Serializable{
         this.seat = seat;
         this.checked = false;
         this.ok = false;
+    }
+    
+    public Res(int id, String nazwa,int sid, int[] seat){
+        this.seat = new int[1][2];
+        this.imienazwisko = nazwa;
+        this.showid = sid;
+        this.seat[0] = seat;
+        this.checked = false;
+        this.ok = false;
+        this.id = id;
+    }
+    /**
+     * Konstruktor klasy Rezerwacji danego seansu dla kilku miejsc
+     * @param nazwa nazwa/nazwisko klienta, który rezerwuje dany seans
+     * @param id identyfikator rezerwowanego seansu
+     * @param ilosc ilość miejsc do rezerwacji
+     * @param seat tablica dwóch liczb identyfikujących rząd oraz miejsce w danym rzędzie do zarezerwowania dla każdego z 'ilosc' miejsc
+     */
+    public Res(int id, String nazwa,int sid,int ilosc, int[][] seat){
+        this.seat = new int[ilosc][2];
+        this.imienazwisko = nazwa;
+        this.showid = sid;
+        this.seat = seat;
+        this.checked = false;
+        this.ok = false;
+        this.id = id;
     }
     
     @Override

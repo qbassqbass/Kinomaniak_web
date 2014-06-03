@@ -72,6 +72,28 @@ public class Movie implements Serializable{
         this.rating = rating;
         this.desc = desc;
     }
+    
+    public Movie(int id, String name,String genre,String rating){
+        this.name = name;
+        this.genre = genre;
+        this.rating = rating;
+        this.desc = null;
+        this.id = id;
+    }
+    /**
+     * Konstruktor klasy filmowej z opisem
+     * @param name tytuł filmu
+     * @param genre rodzaj filmu
+     * @param rating klasyfikacja filmu
+     * @param desc opis filmu
+     */
+    public Movie(int id, String name,String genre,String rating,String desc){
+        this.name = name;
+        this.genre = genre;
+        this.rating = rating;
+        this.desc = desc;
+        this.id = id;
+    }
     /**
      * Metoda zwracająca tytuł filmu
      * @return tytuł filmu

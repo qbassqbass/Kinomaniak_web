@@ -34,10 +34,9 @@ public class MovieController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             DBConnector db = new DBConnector();
             db.connect();
-            HttpSession session = request.getSession(false);
+            HttpSession session = request.getSession(true);
             session.setAttribute("db", db);
             response.sendRedirect("ShowItems.jsp");
         }
