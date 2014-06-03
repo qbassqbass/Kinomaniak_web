@@ -39,5 +39,18 @@
                     
             <%    }
             } %>
+            
+            Res:
+            <% arr = db.load("Res");
+            for(Object o : arr){
+                if(o instanceof Res){
+                    Res r = (Res)o;%>
+                    <h1><%= r.getId() %>. <%= r.getName() %></h1>
+                    Seats: <%= r.formatSeats() %><br />
+                    ShowID: <%= r.getShowID() %> <br /><br />
+                    
+                    
+            <%    }
+            } %>
     </body>
 </html>

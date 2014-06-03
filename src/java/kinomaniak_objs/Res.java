@@ -25,6 +25,10 @@ public class Res implements Serializable{
     private boolean checked; // potwierdzenie rezerwacji
     private boolean ok; // odebrana rezerwacja
     
+    public int getId(){
+        return this.id;
+    }
+    
     public Element toXML(){
         Element res = new Element("Res");
         res.addContent(new Element("imienazwisko").setText(String.valueOf(this.imienazwisko)));
@@ -110,8 +114,9 @@ public class Res implements Serializable{
     }
     /**
      * Konstruktor klasy Rezerwacji danego seansu dla kilku miejsc
+     * @param id identyfikator rezerwacji
      * @param nazwa nazwa/nazwisko klienta, który rezerwuje dany seans
-     * @param id identyfikator rezerwowanego seansu
+     * @param sid identyfikator rezerwowanego seansu
      * @param ilosc ilość miejsc do rezerwacji
      * @param seat tablica dwóch liczb identyfikujących rząd oraz miejsce w danym rzędzie do zarezerwowania dla każdego z 'ilosc' miejsc
      */
@@ -206,7 +211,7 @@ public class Res implements Serializable{
     public String formatSeatsSQL(){
         String tmp = "";
         for(int s[] : this.getSeats()){
-            tmp += s[0] + ":" + s[1] + "|";
+            tmp += s[0] + ":" + s[1] + ",";
         }
 //        StringBuilder sb = new StringBuilder(tmp);
 //        sb.deleteCharAt(tmp.length()-1);

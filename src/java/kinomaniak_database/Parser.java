@@ -57,12 +57,19 @@ public class Parser {
                     break;
                 case "CRoom":
 //                    obj = new CRoom()
+                    while(result.next()){
+                        obj = new CRoom(result.getInt("id"));
+                        arr.add(obj);
+                    }
                     break;
                 case "Attraction":
-                    int id = result.getInt("id");
-                    String name = result.getString("name");
-                    float price = result.getFloat("price");
-                    obj = new Attraction(id,name,price);
+                    while(result.next()){
+                        int id = result.getInt("id");
+                        String name = result.getString("name");
+                        float price = result.getFloat("price");
+                        obj = new Attraction(id, name, price);
+                        arr.add(obj);
+                    }
 //                    cannot do anything... -.-
                     break;
                 case "GoldCard":
@@ -84,11 +91,23 @@ public class Parser {
                     while(result.next()){                        
                         int idres = result.getInt("id");
                         String nameres = result.getString("imienazwisko");
+                        int showid = result.getInt("showid");
                         boolean checked = result.getBoolean("checked");
                         boolean ok = result.getBoolean("ok");
                         String seat = result.getString("seat");
 //                        obj = new Res()
-                        
+                        String seatString[] = seat.split(",");
+                        int seats[][] = new int[seatString.length][2];
+                        int i = 0;
+                        for(String s : seatString){
+                            seats[i][0] = Integer.valueOf(s.split(":")[0]);
+                            seats[i][1] = Integer.valueOf(s.split(":")[1]);
+                            i++;
+                        }
+                        obj = new Res(idres, nameres, showid, seatString.length, seats);
+                        if(checked)((Res)obj).accept();
+                        if(ok)((Res)obj).get();
+                        arr.add(obj);                        
                     }
                     break;
                 case "Show":
