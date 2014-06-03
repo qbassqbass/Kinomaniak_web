@@ -113,9 +113,9 @@ public class Parser {
                     break;
                 case "Show":
                     while(result.next()){
-                        ArrayList<Object> movies = this.load(conn, "Movie");
-                        ArrayList<Object> rooms = this.load(conn, "CRoom");
-                        ArrayList<Object> times = this.load(conn, "Time");
+                        ArrayList<Object> movies;
+                        ArrayList<Object> rooms;
+                        ArrayList<Object> times;
                         int showid = result.getInt("id");
                         int movid = result.getInt("mov");
                         int roomid = result.getInt("room");
