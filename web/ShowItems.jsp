@@ -14,8 +14,8 @@
         <title>Show Movies</title>
     </head>
     <body>
-        <jsp:useBean id="db" scope="session" class="kinomaniak_database.DBConnector" />
-        <% db.connect();
+        <jsp:useBean id="db" scope="session" type="kinomaniak_database.DBConnector" />
+        <% //db.connect();
             ArrayList<Object> arr = db.load("Movie");
             for(Object o : arr){
                 if(o instanceof Movie){ 
