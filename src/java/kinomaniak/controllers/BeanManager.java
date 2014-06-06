@@ -30,7 +30,7 @@ public class BeanManager {
     public BeanManager() {
         db = new DBConnector();
         db.connect();
-        initMovies();
+//        initMovies();
 //        this.strings.add("Hello");
 //        this.strings.add("World");
     }
@@ -40,6 +40,7 @@ public class BeanManager {
 //    }
     
     public ArrayList<Movie> getMovies(){
+        initMovies();
         return movies;
     }
 
