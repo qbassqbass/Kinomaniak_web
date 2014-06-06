@@ -6,8 +6,10 @@
 
 package kinomaniak.controllers;
 
+import java.util.ArrayList;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import kinomaniak.beans.Movie;
 import kinomaniak.database.DBConnector;
 
 /**
@@ -24,6 +26,25 @@ public class BeanManager {
     public BeanManager() {
         db = new DBConnector();
         db.connect();
+    }
+    
+    public ArrayList<Movie> getMovies(){
+        return this.getMovies(-1);
+    }
+    
+    public ArrayList<Movie> getMovies(int id){
+        ArrayList<Movie> arr = new ArrayList<Movie>();
+        ArrayList<Object> a;
+        if(id == -1){
+            a = db.parser.load(db.getConnection(), "Movie");
+        }else{
+            a = db.parser.load(db.getConnection(), "Movie", id);
+        }
+        for(Object obj : a){
+            arr.add((Movie)obj);
+        }
+        
+        return arr;
     }
     
 }
