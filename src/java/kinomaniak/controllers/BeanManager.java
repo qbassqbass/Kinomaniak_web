@@ -22,28 +22,33 @@ import kinomaniak.database.DBConnector;
 @ManagedBean
 public class BeanManager {
     DBConnector db;
-    ArrayList<Movie> movies;
-    ArrayList<String> strings = new ArrayList<String>();
+    ArrayList<Movie> movies = new ArrayList<Movie>();
+//    ArrayList<String> strings = new ArrayList<String>();
     /**
      * Creates a new instance of BeanManager
      */
     public BeanManager() {
         db = new DBConnector();
         db.connect();
-        this.strings.add("Hello");
-        this.strings.add("World");
+        initMovies();
+//        this.strings.add("Hello");
+//        this.strings.add("World");
     }
 
-    public ArrayList<String> getStrings() {
-        return strings;
-    }
+//    public ArrayList<String> getStrings() {
+//        return strings;
+//    }
     
     public ArrayList<Movie> getMovies(){
-        return this.getMovies(-1);
+        return movies;
+    }
+
+    public void initMovies(){
+        this.initMovies(-1);
     }
     
-    public ArrayList<Movie> getMovies(int id){
-        ArrayList<Movie> arr = new ArrayList<Movie>();
+    public void initMovies(int id){
+//        ArrayList<Movie> arr = new ArrayList<Movie>();
         ArrayList<Object> a;
         if(id == -1){
             a = db.parser.load(db.getConnection(), "Movie");
@@ -51,13 +56,14 @@ public class BeanManager {
             a = db.parser.load(db.getConnection(), "Movie", id);
         }
         for(Object obj : a){
-            arr.add((Movie)obj);
+//            arr.add((Movie)obj);
+            this.movies.add((Movie)obj);
         }
         
-        return arr;
+//        return this.movies;
     }
     
-    public ArrayList<Attraction> getAttractions(){
+    public ArrayList<Attraction> getAttractions() {
         return this.getAttractions(-1);
     }
     

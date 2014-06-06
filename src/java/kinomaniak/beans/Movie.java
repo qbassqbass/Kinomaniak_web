@@ -149,6 +149,6 @@ public class Movie implements Serializable{
     
     @Override
     public String toString(){
-        return this.name;
+        return this.id+"|"+this.name+"|"+this.genre+"|"+this.rating+"|"+this.desc;
     }
 }
