@@ -22,12 +22,20 @@ import kinomaniak.database.DBConnector;
 @ManagedBean
 public class BeanManager {
     DBConnector db;
+    ArrayList<Movie> movies;
+    ArrayList<String> strings = new ArrayList<String>();
     /**
      * Creates a new instance of BeanManager
      */
     public BeanManager() {
         db = new DBConnector();
         db.connect();
+        this.strings.add("Hello");
+        this.strings.add("World");
+    }
+
+    public ArrayList<String> getStrings() {
+        return strings;
     }
     
     public ArrayList<Movie> getMovies(){

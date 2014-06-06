@@ -146,4 +146,9 @@ public class Movie implements Serializable{
     public String getDesc(){
         return this.desc;
     }
+    
+    @Override
+    public String toString(){
+        return this.name;
+    }
 }
