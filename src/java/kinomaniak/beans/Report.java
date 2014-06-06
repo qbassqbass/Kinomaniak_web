@@ -4,19 +4,65 @@
  * and open the template in the editor.
  */
 
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Qbass
  */
+@ManagedBean
 public class Report implements Serializable{
     public static enum element{
         USERID, ATTRID
     };
     private int id;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setRange(kinomaniak.beans.Time[] range) {
+        this.range = range;
+    }
+
+    public void setAttractionId(int attractionId) {
+        this.attractionId = attractionId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public kinomaniak.beans.Time[] getRange() {
+        return range;
+    }
+
+    public int getAttractionId() {
+        return attractionId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public Report() {
+    }
     private int type;
     private Time[] range = new Time[2];
     private int attractionId;

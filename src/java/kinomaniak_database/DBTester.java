@@ -7,8 +7,7 @@
 package kinomaniak_database;
 
 import java.util.ArrayList;
-import kinomaniak_objs.Movie;
-import kinomaniak_objs.Time;
+import kinomaniak.beans.*;
 
 /**
  *

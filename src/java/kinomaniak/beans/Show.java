@@ -2,19 +2,53 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
+import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca dany seans
  * @author qbass
  */
+@ManagedBean
 public class Show implements Serializable {
     private static final long serialVersionUID = 2L;
     
     private int showid;
+
+    public void setShowid(int showid) {
+        this.showid = showid;
+    }
+
+    public void setMov(kinomaniak.beans.Movie mov) {
+        this.mov = mov;
+    }
+
+    public void setRoom(kinomaniak.beans.CRoom room) {
+        this.room = room;
+    }
+
+    public void setTime(kinomaniak.beans.Time time) {
+        this.time = time;
+    }
+
+    public int getShowid() {
+        return showid;
+    }
+
+    public kinomaniak.beans.Movie getMov() {
+        return mov;
+    }
+
+    public kinomaniak.beans.Time getTime() {
+        return time;
+    }
+
+    public Show() {
+    }
     private Movie mov;
     private CRoom room;
     private Time time;
@@ -63,7 +97,7 @@ public class Show implements Serializable {
      * Metoda zwracająca czas rozpoczęcia seansu
      * @return tablica czasu, gdzie int[0] - godzina, int[1] - minuta
      */
-    public int[] getTime(){
+    public int[] getIntTime(){
         int tim[] = new int[2];
         tim[0] = this.time.getHour();
         tim[1] = this.time.getMinute();
@@ -93,7 +127,7 @@ public class Show implements Serializable {
      * @return String ze sformatowanym czasem w postaci godzina:minuta
      */
     public String getFormattedTime(){
-        String tmp = this.getTime()[0]+":"+this.getTime()[1];
+        String tmp = this.getIntTime()[0]+":"+this.getIntTime()[1];
         return tmp;
     }
     /**

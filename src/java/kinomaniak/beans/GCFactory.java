@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
-package kinomaniak_objs;
+package kinomaniak.beans;
+
+import kinomaniak_objs.*;
 
 /**
  *

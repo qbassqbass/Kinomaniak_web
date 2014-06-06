@@ -4,20 +4,34 @@
  * and open the template in the editor.
  */
 
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Qbass
  */
+@ManagedBean
 public class Attraction implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
     private int id;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public Attraction() {
+    }
     private String name;
     private float price;
 

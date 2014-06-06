@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
-
+import javax.faces.bean.ManagedBean;
 /**
  *
  * @author Qbass
  */
+@ManagedBean
 public class Product implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -21,6 +23,25 @@ public class Product implements Serializable{
     private String name;
     private int type;
     private int count;
+
+    public Product() {
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
     private float price;
     
     public Element toXML(){

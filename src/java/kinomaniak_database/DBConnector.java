@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import kinomaniak_objs.Movie;
+import kinomaniak.beans.*;
 
 /**
  *

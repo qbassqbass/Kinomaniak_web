@@ -2,21 +2,75 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import org.jdom2.Element;
+import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca rezerwację seansu
  * @author qbass
  */
+@ManagedBean
 public class Res implements Serializable{
     
     private static final long serialVersionUID = 4L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getImienazwisko() {
+        return imienazwisko;
+    }
+
+    public int getShowid() {
+        return showid;
+    }
+
+    public int[][] getSeat() {
+        return seat;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setImienazwisko(String imienazwisko) {
+        this.imienazwisko = imienazwisko;
+    }
+
+    public void setShowid(int showid) {
+        this.showid = showid;
+    }
+
+    public void setSeat(int[][] seat) {
+        this.seat = seat;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public void setOk(boolean ok) {
+        this.ok = ok;
+    }
+
+    public Res() {
+    }
    
     private int id;
     private String imienazwisko;

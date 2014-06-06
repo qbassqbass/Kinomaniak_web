@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
-import kinomaniak_objs.*;
+import kinomaniak.beans.*;
 import java.util.Scanner;
 /**
  * Klasa główna Menadżera dla projektu Kinomaniak.

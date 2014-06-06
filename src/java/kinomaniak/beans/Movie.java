@@ -2,16 +2,39 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
+import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca film
  * @author qbass
  */
+@ManagedBean
 public class Movie implements Serializable{
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
     
     private static final long serialVersionUID = 1L;
     
@@ -23,6 +46,10 @@ public class Movie implements Serializable{
     
     public int getId(){
         return this.id;
+    }
+    
+    public Movie(){
+        
     }
     
     public Element toXML(){

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package kinomaniak_mgmt;
-import kinomaniak_objs.*;
+import kinomaniak.beans.*;
 import kinomaniak_database.DBConnector;
 import java.io.*;
 import java.util.Date;

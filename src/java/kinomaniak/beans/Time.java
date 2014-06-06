@@ -2,16 +2,46 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
+import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca czas rozpoczęscia seansu
  * @author qbass
  */
+@ManagedBean
 public class Time implements Serializable{
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public Time() {
+    }
     private static final long serialVersionUID = 2L;
     private int id;
     private int hour;

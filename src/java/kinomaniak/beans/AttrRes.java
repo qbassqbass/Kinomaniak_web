@@ -4,17 +4,47 @@
  * and open the template in the editor.
  */
 
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 
 /**
  * 
  * @author Qbass
  */
+@ManagedBean
 public class AttrRes implements Serializable{
     private String imienazwisko;
     private int atrid;
+
+    public void setImienazwisko(String imienazwisko) {
+        this.imienazwisko = imienazwisko;
+    }
+
+    public void setAtrid(int atrid) {
+        this.atrid = atrid;
+    }
+
+    public void setTime(kinomaniak.beans.Time time) {
+        this.time = time;
+    }
+
+    public String getImienazwisko() {
+        return imienazwisko;
+    }
+
+    public int getAtrid() {
+        return atrid;
+    }
+
+    public kinomaniak.beans.Time getTime() {
+        return time;
+    }
+
+    public AttrRes() {
+    }
     private Time time;
     
     public AttrRes(String name, int id, Time time){
@@ -41,7 +71,7 @@ public class AttrRes implements Serializable{
         return this.time;
     }
     
-    public int[] getTime(){
+    public int[] getIntTime(){
         int tim[] = new int[2];
         tim[0] = this.time.getHour();
         tim[1] = this.time.getMinute();
@@ -72,7 +102,7 @@ public class AttrRes implements Serializable{
      * @return String ze sformatowanym czasem w postaci godzina:minuta
      */
     public String getFormattedTime(){
-        String tmp = this.getTime()[0]+":"+this.getTime()[1];
+        String tmp = this.getIntTime()[0]+":"+this.getIntTime()[1];
         return tmp;
     }
     /**

@@ -2,22 +2,48 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package kinomaniak_objs;
+package kinomaniak.beans;
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import java.util.Formatter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 import org.jdom2.Element;
+import javax.faces.bean.ManagedBean;
 
 
 /**
  * Klasa reprezentująca użytkownika
  * @author qbass
  */
+@ManagedBean
 public class User implements Serializable{
     private static final long serialVersionUID = 2L;
     private int id;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUtype(int utype) {
+        this.utype = utype;
+    }
+
+    public void setAvailcmds(int[] availcmds) {
+        this.availcmds = availcmds;
+    }
+
+    public User() {
+    }
     private String name;
     private String password;
     private int utype;

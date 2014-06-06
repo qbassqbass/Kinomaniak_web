@@ -2,17 +2,43 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package kinomaniak_objs;
+package kinomaniak.beans;
 
+import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
 import org.jdom2.Attribute;
+import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca salę kinową
  * @author qbass
  */
+@ManagedBean
 public class CRoom implements Serializable {
+
+    public CRoom() {
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public boolean[][] getSeats() {
+        return seats;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setSeats(boolean[][] seats) {
+        this.seats = seats;
+    }
     
     private static final long serialVersionUID = 1L;
     private int id;
