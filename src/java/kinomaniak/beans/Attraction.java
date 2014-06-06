@@ -6,16 +6,13 @@
 
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
-import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Qbass
  */
-@ManagedBean
 public class Attraction implements Serializable{
     
     private static final long serialVersionUID = 1L;

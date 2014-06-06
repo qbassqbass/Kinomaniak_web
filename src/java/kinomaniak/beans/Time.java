@@ -4,16 +4,13 @@
  */
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
-import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca czas rozpoczęscia seansu
  * @author qbass
  */
-@ManagedBean
 public class Time implements Serializable{
 
     public void setId(int id) {

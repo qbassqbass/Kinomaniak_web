@@ -6,14 +6,11 @@
 
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
-import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Qbass
  */
-@ManagedBean
 public class GoldCard implements GC{    
         private final int id;
         private final int ownerId;

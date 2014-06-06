@@ -4,19 +4,16 @@
  */
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import org.jdom2.Element;
-import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca rezerwację seansu
  * @author qbass
  */
-@ManagedBean
 public class Res implements Serializable{
     
     private static final long serialVersionUID = 4L;

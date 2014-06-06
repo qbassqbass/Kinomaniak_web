@@ -4,17 +4,13 @@
  */
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
-import org.jdom2.Attribute;
-import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca salę kinową
  * @author qbass
  */
-@ManagedBean
 public class CRoom implements Serializable {
 
     public CRoom() {

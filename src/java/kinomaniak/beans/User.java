@@ -3,21 +3,18 @@
  * and open the template in the editor.
  */
 package kinomaniak.beans;
-import kinomaniak_objs.*;
 import java.io.Serializable;
 import java.util.Formatter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 import org.jdom2.Element;
-import javax.faces.bean.ManagedBean;
 
 
 /**
  * Klasa reprezentująca użytkownika
  * @author qbass
  */
-@ManagedBean
 public class User implements Serializable{
     private static final long serialVersionUID = 2L;
     private int id;

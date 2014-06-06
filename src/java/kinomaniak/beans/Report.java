@@ -6,15 +6,12 @@
 
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Qbass
  */
-@ManagedBean
 public class Report implements Serializable{
     public static enum element{
         USERID, ATTRID

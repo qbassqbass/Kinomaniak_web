@@ -6,7 +6,6 @@
 
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
 
 /**
  *

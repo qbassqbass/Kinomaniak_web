@@ -4,16 +4,13 @@
  */
 package kinomaniak.beans;
 
-import kinomaniak_objs.*;
 import java.io.Serializable;
 import org.jdom2.Element;
-import javax.faces.bean.ManagedBean;
 
 /**
  * Klasa reprezentująca dany seans
  * @author qbass
  */
-@ManagedBean
 public class Show implements Serializable {
     private static final long serialVersionUID = 2L;
     
