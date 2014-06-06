@@ -9,6 +9,7 @@ package kinomaniak.controllers;
 import java.util.ArrayList;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.bean.ManagedBean;
 import kinomaniak.beans.*;
 import kinomaniak.database.DBConnector;
 
@@ -16,8 +17,9 @@ import kinomaniak.database.DBConnector;
  *
  * @author Jakub
  */
-@Named(value = "beanManager")
+//@Named(value = "beanManager")
 @Dependent
+@ManagedBean
 public class BeanManager {
     DBConnector db;
     /**
