@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package kinomaniak_database;
+package kinomaniak.database;
 
 /**
  *

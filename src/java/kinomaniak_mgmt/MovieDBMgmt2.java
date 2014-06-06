@@ -4,7 +4,7 @@
  */
 package kinomaniak_mgmt;
 import kinomaniak.beans.*;
-import kinomaniak_database.DBConnector;
+import kinomaniak.database.DBConnector;
 import java.io.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;

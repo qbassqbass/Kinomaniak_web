@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>MovieController</servlet-name>
-        <servlet-class>controllers.MovieController</servlet-class>
+        <servlet-class>kinomaniak.controllers.MovieController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>

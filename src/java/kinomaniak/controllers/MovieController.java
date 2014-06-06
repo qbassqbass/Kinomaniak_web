@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package controllers;
+package kinomaniak.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import kinomaniak_database.DBConnector;
+import kinomaniak.database.DBConnector;
 
 /**
  *
