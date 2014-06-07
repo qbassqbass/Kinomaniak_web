@@ -179,6 +179,55 @@ public class Parser {
         return arr;
     }
     
+    public void update(Connection conn, Object obj){
+        try {
+            Statement statement = conn.createStatement();
+//            ResultSet result;
+            statement.executeUpdate(this.update(obj));
+        } catch (SQLException ex) {
+            Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public String update(Object obj){
+        String query = "";
+        if(obj instanceof Movie){
+            Movie mov = (Movie) obj;
+            query = "UPDATE Movie SET name='" + mov.getName() +"', genere='" + mov.getGenre() + "', rating='" + mov.getRating() + "', descr='" + mov.getDesc() + "' WHERE id='"+ mov.getId()+"';";
+        }else if(obj instanceof CRoom){
+            CRoom cr = (CRoom) obj;
+            query = "INSERT INTO Croom VALUES (NULL, '" + cr.getID() + "');";
+        }else if(obj instanceof Attraction){
+            Attraction at = (Attraction) obj;
+            query = "INSERT INTO Attraction VALUES (NULL, '" + at.getName() + "', '" + at.getPrice() + "');";
+        }else if(obj instanceof Product){
+            Product pr = (Product) obj;
+            query = "INSERT INTO Product VALUES (NULL, '" + pr.getName() + "', '" + pr.getType() + "', '" + pr.getPrice() + "', '" + pr.getCount() + ",);";
+        }else if(obj instanceof Report){
+            Report rep = (Report) obj;
+            
+        }else if(obj instanceof Res){
+            Res res = (Res) obj;
+            query = "INSERT INTO Res VALUES (NULL, '" + res.getName() + "', '" + res.getShowID() + "', '" + res.formatSeatsSQL()+ "', '" + res.ischecked() + "', '" + res.isok() + "');";
+        }else if(obj instanceof Show){
+            Show sh = (Show) obj;
+            query = "INSERT INTO Show VALUES (NULL, '" + sh.getID() + "', '" + sh.getMovie().getId() + "', '" + sh.getRoom().getID() + "', '" + sh.getFormatted() + "');";
+        }else if(obj instanceof Ticket){
+            Ticket tick = (Ticket) obj;
+            
+        }else if(obj instanceof Time){
+            Time tim = (Time) obj;
+            // will not be implemented
+        }else if(obj instanceof User){
+            User usr = (User) obj;
+            query = "INSERT INTO User VALUES (NULL, '" + usr.getName() + "', '" + usr.getPass() + "', '" + usr.getUType() + "');";
+        }else if(obj instanceof GoldCard){
+            GoldCard gc = (GoldCard) obj;
+            
+        }
+        return query;
+    }
+    
     public String save(Object obj){
         String query = "";
         if(obj instanceof Movie){

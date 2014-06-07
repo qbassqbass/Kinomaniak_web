@@ -33,6 +33,9 @@ public class DBTester {
         }
         ArrayList<Object> times = connector.load("Time", 2);
         System.out.println(connector.parser.load("Time", 2));
+        ((Movie)movs.get(0)).setDesc("Blablubel");
+        System.out.println(connector.parser.update(movs.get(0)));
+//        connector.update(movs.get(0));
         System.out.println(((Time)times.get(0)).getHour());
         
     }

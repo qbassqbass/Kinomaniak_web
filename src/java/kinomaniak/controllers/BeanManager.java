@@ -66,6 +66,10 @@ public class BeanManager {
 //        this.initMovies(-1);
 //    }
     
+    public void buyProduct(int id){
+        ArrayList<Object> a = db.parser.load(db.getConnection(), "Movie", id);
+    }
+    
     public ArrayList<Movie> getMovies(){
 //        ArrayList<Movie> arr = new ArrayList<Movie>();
         ArrayList<Object> a;

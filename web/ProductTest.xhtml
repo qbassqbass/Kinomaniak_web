@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <c:forEach items="${beanManager.products}" var="product">
+            <h1><h:outputText value="#{product.id}.#{product.name}"></h:outputText></h1>
+            <h:outputText value="Count: #{product.count}"></h:outputText><br />
+            <h:outputText value="Price: #{product.price}"></h:outputText><br />
+            <h:commandButton action="#{beanManager.buyProduct(product.id)}" value="buy"></h:commandButton>
+        </c:forEach>
+    </h:body>
+</html>
+

@@ -53,6 +53,10 @@ public class DBConnector {
         }
     }
     
+    public void update(Object obj){
+        this.parser.update(connection, obj);
+    }
+    
     public void save(Object obj){
         query = this.parser.save(obj);
         
