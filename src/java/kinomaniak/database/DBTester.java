@@ -37,6 +37,10 @@ public class DBTester {
         System.out.println(connector.parser.update(movs.get(0)));
 //        connector.update(movs.get(0));
         System.out.println(((Time)times.get(0)).getHour());
+        Product pr = (Product)connector.parser.load(connector.getConnection(), "Product", 2).get(0);
+        pr.setCount(pr.getCount()-1);
+        System.out.println(pr.getCount());
+        System.out.println(connector.parser.update(pr));
         
     }
 }

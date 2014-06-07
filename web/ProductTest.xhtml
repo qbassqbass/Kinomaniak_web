@@ -11,7 +11,9 @@
             <h1><h:outputText value="#{product.id}.#{product.name}"></h:outputText></h1>
             <h:outputText value="Count: #{product.count}"></h:outputText><br />
             <h:outputText value="Price: #{product.price}"></h:outputText><br />
-            <h:commandButton action="#{beanManager.buyProduct(product.id)}" value="buy"></h:commandButton>
+            <h:form>
+                <h:commandButton action="#{beanManager.buyProduct(product.id)}" value="buy"></h:commandButton>
+            </h:form>
         </c:forEach>
     </h:body>
 </html>

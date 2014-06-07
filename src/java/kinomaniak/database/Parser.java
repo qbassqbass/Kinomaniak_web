@@ -202,7 +202,7 @@ public class Parser {
             query = "UPDATE Attraction SET name='" + at.getName() + "', price='" + at.getPrice() + "' WHERE id="+at.getId()+";";
         }else if(obj instanceof Product){
             Product pr = (Product) obj;
-            query = "UPDATE Product SET name='" + pr.getName() + "', typ='" + pr.getType() + "', price='" + pr.getPrice() + "', pcount='" + pr.getCount() + " WHERE id="+pr.getId()+";";
+            query = "UPDATE Product SET name='" + pr.getName() + "', typ='" + pr.getType() + "', price='" + pr.getPrice() + "', pcount='" + pr.getCount() + "' WHERE id="+pr.getId()+";";
         }else if(obj instanceof Report){
             Report rep = (Report) obj;
             
