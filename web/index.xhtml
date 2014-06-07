@@ -11,7 +11,7 @@
                 <tr><td><h:outputText value="Login: "></h:outputText></td><td><h:inputText value="#{user.name}" /></td></tr>
                 <tr><td><h:outputText value="Password: "></h:outputText></td><td><h:inputSecret value="#{user.password}" /></td></tr>
             </table>
-            <h:commandButton action="#{user.checkUser(beanManager.users)}" />
+            <h:commandButton action="#{user.checkUser(beanManager.users)}" value="Login" />
         </h:form>
     </h:body>
 </html>
