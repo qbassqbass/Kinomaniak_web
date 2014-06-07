@@ -1,18 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Logged as: <h:outputText value="#{user.name}" /><br />
-        <h:form>
-        <h:outputText value="ID:"></h:outputText>
-        <h:inputText value="#{beanManager.id}"></h:inputText>(-1 for All)<br />
-        <h:commandButton action="MovieTest.xhtml" value="Movie"></h:commandButton>
-        <h:commandButton action="ProductTest.xhtml" value="Product"></h:commandButton>
+        <h:form rendered="#{not empty user.name}">
+            Logged as: <h:outputText value="#{user.name}" />
+            <h:commandLink value="Logout" action="#{user.logout()}" />
+            <br />
+            <h:form>
+            <h:outputText value="ID:"></h:outputText>
+            <h:inputText value="#{beanManager.id}"></h:inputText>(-1 for All)<br />
+            <h:commandButton action="MovieTest.xhtml" value="Movie"></h:commandButton>
+            <h:commandButton action="ProductTest.xhtml" value="Product"></h:commandButton>
+            </h:form>
         </h:form>
+        <h:form rendered="#{empty user.name}">
+            You have to <a href="index.xhtml">login</a> first 
+        </h:form>
+        
         <!---->
     </h:body>
 </html>

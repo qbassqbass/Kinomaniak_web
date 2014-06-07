@@ -241,7 +241,7 @@ public class User implements Serializable{
         for(User u : usrs){
             if(u.equals(this)) return "OK";            
         }
-        
+        this.logout();
         return "ERR";
     }
 
@@ -251,6 +251,13 @@ public class User implements Serializable{
 
     public int getUtype() {
         return utype;
+    }
+    
+    public void logout(){
+        this.name = null;
+        this.password = null;
+        this.id = -1;
+        this.utype = -1;
     }
     
 }
