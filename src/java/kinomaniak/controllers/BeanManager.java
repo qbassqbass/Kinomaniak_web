@@ -67,7 +67,7 @@ public class BeanManager {
 //    }
     
     public void buyProduct(int id){
-        ArrayList<Object> a = db.parser.load(db.getConnection(), "Movie", id);
+        
     }
     
     public ArrayList<Movie> getMovies(){

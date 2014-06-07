@@ -195,23 +195,23 @@ public class Parser {
             Movie mov = (Movie) obj;
             query = "UPDATE Movie SET name='" + mov.getName() +"', genere='" + mov.getGenre() + "', rating='" + mov.getRating() + "', descr='" + mov.getDesc() + "' WHERE id='"+ mov.getId()+"';";
         }else if(obj instanceof CRoom){
-            CRoom cr = (CRoom) obj;
-            query = "INSERT INTO Croom VALUES (NULL, '" + cr.getID() + "');";
+//            CRoom cr = (CRoom) obj;
+//            query = "UPDATE Croom SET id='" + cr.getID() + "');";
         }else if(obj instanceof Attraction){
             Attraction at = (Attraction) obj;
-            query = "INSERT INTO Attraction VALUES (NULL, '" + at.getName() + "', '" + at.getPrice() + "');";
+            query = "UPDATE Attraction SET name='" + at.getName() + "', price='" + at.getPrice() + "' WHERE id="+at.getId()+";";
         }else if(obj instanceof Product){
             Product pr = (Product) obj;
-            query = "INSERT INTO Product VALUES (NULL, '" + pr.getName() + "', '" + pr.getType() + "', '" + pr.getPrice() + "', '" + pr.getCount() + ",);";
+            query = "UPDATE Product SET name='" + pr.getName() + "', typ='" + pr.getType() + "', price='" + pr.getPrice() + "', pcount='" + pr.getCount() + " WHERE id="+pr.getId()+";";
         }else if(obj instanceof Report){
             Report rep = (Report) obj;
             
         }else if(obj instanceof Res){
             Res res = (Res) obj;
-            query = "INSERT INTO Res VALUES (NULL, '" + res.getName() + "', '" + res.getShowID() + "', '" + res.formatSeatsSQL()+ "', '" + res.ischecked() + "', '" + res.isok() + "');";
+            query = "UPDATE Res SET name='" + res.getName() + "', showid='" + res.getShowID() + "', seat='" + res.formatSeatsSQL()+ "', checked=" + res.ischecked() + ", ok=" + res.isok() + " WHERE id="+res.getId()+";";
         }else if(obj instanceof Show){
             Show sh = (Show) obj;
-            query = "INSERT INTO Show VALUES (NULL, '" + sh.getID() + "', '" + sh.getMovie().getId() + "', '" + sh.getRoom().getID() + "', '" + sh.getFormatted() + "');";
+            query = "UPDATE Show SET mov=" + sh.getMovie().getId() + ", room=" + sh.getRoom().getID() + ", timeid=" + sh.getCTime().getId()+ " WHERE id="+sh.getShowid()+";";
         }else if(obj instanceof Ticket){
             Ticket tick = (Ticket) obj;
             
@@ -220,7 +220,7 @@ public class Parser {
             // will not be implemented
         }else if(obj instanceof User){
             User usr = (User) obj;
-            query = "INSERT INTO User VALUES (NULL, '" + usr.getName() + "', '" + usr.getPass() + "', '" + usr.getUType() + "');";
+            query = "UPDATE User SET name='" + usr.getName() + "', password='" + usr.getPass() + "', utype='" + usr.getUType() + "' WHERE id="+usr.getId()+";";
         }else if(obj instanceof GoldCard){
             GoldCard gc = (GoldCard) obj;
             
