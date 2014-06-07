@@ -8,5 +8,22 @@
         <managed-bean-class>kinomaniak.controllers.BeanManager</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-    
+    <managed-bean>
+        <managed-bean-name>user</managed-bean-name>
+        <managed-bean-class>kinomaniak.beans.User</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{user.checkUser(beanManager.users)}</from-action>
+            <from-outcome>OK</from-outcome>
+            <to-view-id>ManagerTest.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{user.checkUser(beanManager.users)}</from-action>
+            <from-outcome>ERR</from-outcome>
+            <to-view-id>index.html</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

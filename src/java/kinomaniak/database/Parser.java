@@ -162,6 +162,10 @@ public class Parser {
                     break;
                 case "User":
 //                    cannot do anything... -.-
+                    while(result.next()){
+                        obj = new User(result.getInt("id"), result.getString("name"), result.getString("password"), result.getInt("utype"));
+                        arr.add(obj);
+                    }
                     break;
                 case "Time":
                     while(result.next()){
@@ -220,7 +224,7 @@ public class Parser {
             // will not be implemented
         }else if(obj instanceof User){
             User usr = (User) obj;
-            query = "UPDATE User SET name='" + usr.getName() + "', password='" + usr.getPass() + "', utype='" + usr.getUType() + "' WHERE id="+usr.getId()+";";
+            query = "UPDATE Users SET name='" + usr.getName() + "', password='" + usr.getPass() + "', utype='" + usr.getUType() + "' WHERE id="+usr.getId()+";";
         }else if(obj instanceof GoldCard){
             GoldCard gc = (GoldCard) obj;
             
@@ -259,7 +263,7 @@ public class Parser {
             // will not be implemented
         }else if(obj instanceof User){
             User usr = (User) obj;
-            query = "INSERT INTO User VALUES (NULL, '" + usr.getName() + "', '" + usr.getPass() + "', '" + usr.getUType() + "');";
+            query = "INSERT INTO Users VALUES (NULL, '" + usr.getName() + "', '" + usr.getPass() + "', '" + usr.getUType() + "');";
         }else if(obj instanceof GoldCard){
             GoldCard gc = (GoldCard) obj;
             
@@ -305,7 +309,7 @@ public class Parser {
                 query = "SELECT * FROM Ticket";
                 break;
             case "User":
-                query = "SELECT * FROM User";
+                query = "SELECT * FROM Users";
                 break;
             case "Time":
                 query = "SELECT * FROM TimeDate";

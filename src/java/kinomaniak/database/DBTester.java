@@ -41,6 +41,12 @@ public class DBTester {
         pr.setCount(pr.getCount()-1);
         System.out.println(pr.getCount());
         System.out.println(connector.parser.update(pr));
+        Movie m = new Movie();
+        m.setName("LOTR");
+        m.setGenre("Fantasy");
+        m.setDesc("Hello World!");
+        m.setRating("Adult");
+        connector.save(m);
         
     }
 }

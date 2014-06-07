@@ -67,7 +67,7 @@ public class DBConnector {
             statement.executeUpdate(query);
             
             statement.close();
-            connection.close();
+//            connection.close();
         }catch(SQLException e){
             System.err.println("Exception: "+e);
         }

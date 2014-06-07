@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Formatter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Objects;
 import org.jdom2.Element;
 
@@ -79,7 +80,7 @@ public class User implements Serializable{
     public User(String name, String password,int utype){
         this.name = name;
         String tmp = password;
-        this.password = toSHA1(tmp.getBytes());        
+        this.password = tmp;//toSHA1(tmp.getBytes());        
         this.utype = utype;
         this.availcmds = new int[12];
         this.setCmds();
@@ -88,7 +89,7 @@ public class User implements Serializable{
     public User(int id,String name, String password,int utype){
         this.name = name;
         String tmp = password;
-        this.password = toSHA1(tmp.getBytes());        
+        this.password = tmp;//toSHA1(tmp.getBytes());        
         this.utype = utype;
         this.availcmds = new int[12];
         this.setCmds();
@@ -102,7 +103,7 @@ public class User implements Serializable{
     public User(String name, String password){
         this.name = name;
         String tmp = password;
-        this.password = toSHA1(tmp.getBytes());      
+        this.password = tmp;//toSHA1(tmp.getBytes());      
     }
     /**
      * Przesłoniona metoda equals klasy Object, dla pominięcia sprawdzania typu użytkownika i jego uprawnień
@@ -234,6 +235,22 @@ public class User implements Serializable{
         String result = formatter.toString();
         formatter.close();
         return result;
+    }
+    
+    public String checkUser(ArrayList<User> usrs){
+        for(User u : usrs){
+            if(u.equals(this)) return "OK";            
+        }
+        
+        return "ERR";
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getUtype() {
+        return utype;
     }
     
 }
