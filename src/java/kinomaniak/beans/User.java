@@ -239,7 +239,11 @@ public class User implements Serializable{
     
     public String checkUser(ArrayList<User> usrs){
         for(User u : usrs){
-            if(u.equals(this)) return "OK";            
+            if(u.equals(this)){
+                this.id = u.getId();
+                this.utype = u.getUType();
+                return "OK";
+            }            
         }
         this.logout();
         return "ERR";

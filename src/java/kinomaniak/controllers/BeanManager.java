@@ -68,7 +68,8 @@ public class BeanManager {
     
     public void buyProduct(int id){
         Product pr = (Product)db.parser.load(db.getConnection(), "Product", id).get(0);
-        pr.setCount(pr.getCount()-1);
+//        pr.setCount(pr.getCount()-1);
+        pr.buy();
 //        System.out.println(pr.getCount());
         db.update(pr);
     }
